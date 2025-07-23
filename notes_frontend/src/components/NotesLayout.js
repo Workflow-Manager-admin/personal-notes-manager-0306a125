@@ -1,8 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Outlet, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import NotesListPage from "./NotesListPage";
-import NoteEditorPage from "./NoteEditorPage";
-import NoteViewPage from "./NoteViewPage";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../App";
 import { theme } from "../theme";
 import "./NotesLayout.css";
@@ -73,12 +70,7 @@ function NotesLayout() {
           <span className="header__title">{loc.pathname === "/" ? "All Notes" : "Notes"}</span>
         </header>
         <section className="main__content">
-          <Routes>
-            <Route path="/" element={<NotesListPage />} />
-            <Route path="/notes/new" element={<NoteEditorPage mode="create" />} />
-            <Route path="/notes/:id" element={<NoteViewPage />} />
-            <Route path="/notes/:id/edit" element={<NoteEditorPage mode="edit" />} />
-          </Routes>
+          <Outlet />
         </section>
       </main>
     </div>
